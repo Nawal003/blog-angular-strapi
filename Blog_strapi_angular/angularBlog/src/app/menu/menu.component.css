@@ -1,0 +1,15 @@
+.logo{
+    padding: 1em;
+    width: 80px;
+    outline-style: none;
+    border: none;
+    margin-right: 2em;
+    cursor: pointer;
+
+}
+.logo:hover{
+   
+   transform: scale(1.2);
+   border-radius: 1em;
+}
+

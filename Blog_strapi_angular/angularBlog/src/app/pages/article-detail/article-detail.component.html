@@ -1,0 +1,32 @@
+<section>
+    <h2>Articles du Jour</h2>
+    
+        <router-outlet></router-outlet>
+    
+    <article>
+        <h2>{{article.titre}}</h2>
+        <img src="./assets/images/{{article.img}}" [alt]="article.titre">
+        <p>{{article.contenu}}</p>
+        <a href routerLink="/articles">Retourner aux articles</a>
+        
+    </article>
+    <article *ngFor="let c of article.commentaires">
+        <h1>{{c.titre}}</h1>
+        <h4>{{c.created_at | date :'medium'}}</h4>
+        <p>{{c.contenu}}</p>
+       
+    </article>
+
+</section>
+<section>
+    <form #ctlF="ngForm" (ngSubmit)="ajouterCommentaire(ctlF.value)">
+        <input name="article" value="{{article}}" [(ngModel)]="article" hidden>
+        <label for="titre">Titre</label>
+        <input name="titre" required placeholder="Titre" [(ngModel)]="commentaire.titre">
+        <label for="contenu">Commentaire</label>
+        <textarea name="contenu" required placeholder="Commentez" [(ngModel)]="commentaire.contenu"></textarea>
+        <input type="submit" value="Envoyer" [disabled]="ctlF.invalid">
+        <input type="reset" value="Annuler">
+
+    </form>
+</section>

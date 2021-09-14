@@ -1,0 +1,28 @@
+<section>
+    <article *ngIf="bool">
+        <router-outlet></router-outlet>
+    </article>
+    <select [(ngModel)]="tri" (change)="logTri()">
+        <option value="">Tous</option>
+        <option value="Automne">Automne</option>
+        <option value="Ete">Ete</option>
+        <option value="Hiver">Hiver</option>
+        <option value="Printemps">Printemps</option>
+    </select>
+
+
+</section>
+
+
+
+<section>
+    <h2>Articles du Jour</h2>
+    <article *ngIf="bool">
+        <router-outlet></router-outlet>
+    </article>
+    <article *ngFor="let a of articlesServ.articles | categories:tri">
+        <h2>{{a.titre}}</h2>
+        <img src="./assets/images/{{a.img}}" [alt]="a.titre" (click)=goArticles(a.id)>
+        <p (click)=goArticles(a.id)>Lire la suite -></p>
+    </article>
+</section>

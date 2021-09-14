@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "commentaires",
+  "info": {
+    "name": "commentaire",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titre": {
+      "type": "string",
+      "required": true
+    },
+    "contenu": {
+      "type": "richtext",
+      "required": true
+    },
+    "article": {
+      "via": "commentaires",
+      "model": "article"
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "commentaires"
+    }
+  }
+}
